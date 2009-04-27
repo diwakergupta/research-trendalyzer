@@ -165,8 +165,14 @@ def main(options, args):
           tag = c.contents[0].strip().lower()
           tid = hashlib.sha256(tag).hexdigest()
           log.debug("%s: %s" % (tag, tid))
+          log.info("%d:%s:%s" % (year, title, tag))
+          # If the keyword already exists, the first try block will fail, but
+          # the keymap should still get updated correctly.
           try:
             db.execute("insert into keywords values (?,?)", (tid, tag))
+          except:
+            pass
+          try:
             db.execute("insert into keymap values (?,?)", (pid, tid))
           except:
             pass
