@@ -9,12 +9,12 @@ import logging
 import optparse
 import os
 import re
-import sqlite3
 import sys
 import urllib2
 
 # non-standard libraries
 import html5lib
+import sqlite3
 
 from html5lib import treebuilders
 
